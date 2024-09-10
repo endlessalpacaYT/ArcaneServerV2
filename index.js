@@ -13,7 +13,7 @@ const functions = require("./structs/functions.js");
 if (!fs.existsSync("./ClientSettings")) fs.mkdirSync("./ClientSettings");
 
 global.JWT_SECRET = functions.MakeID();
-const PORT = 8080;
+const PORT = 3551;
 
 const tokens = JSON.parse(fs.readFileSync("./tokenManager/tokens.json").toString());
 
@@ -68,7 +68,7 @@ app.listen(PORT, () => {
 // if endpoint not found, return this error
 app.use((req, res, next) => {
     error.createError(
-        "errors.com.epicgames.common.not_found", 
+        "errors.com.arcaneserver.common.not_found", 
         "Sorry the resource you were trying to find could not be found", 
         undefined, 1004, undefined, 404, res
     );
