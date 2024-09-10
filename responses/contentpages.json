@@ -9,8 +9,8 @@
       "_type": "CommonUI Simple Message",
       "message": {
         "_type": "CommonUI Simple Message Base",
-        "title": "LawinServer V2",
-        "body": "Join my discord: https://discord.gg/KJ8UaHZ\nYouTube: Lawin\nTwitter: @lawin_010\nSource: https://github.com/Lawin0129/LawinServerV2"
+        "title": "ArcaneServerV2",
+        "body": "Enjoy ArcaneServerV2, Made By Pongo!"
       }
     },
     "_activeDate": "2017-07-19T13:14:04.490Z",
@@ -212,18 +212,9 @@
           "image": "https://cdn.discordapp.com/attachments/927739901540188200/930882355818823720/1_of9OCSRWoAoS3_lNVKqM2g.png",
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
-          "adspace": "DISCORD!",
-          "title": "Join my discord server!",
-          "body": "https://discord.gg/KJ8UaHZ",
-          "spotlight": false
-        },
-        {
-          "image": "https://cdn.discordapp.com/attachments/927739901540188200/930882658546876506/lawin.jpg",
-          "hidden": false,
-          "_type": "CommonUI Simple Message Base",
-          "adspace": "ENJOY!",
-          "title": "LawinServer V2",
-          "body": "Enjoy LawinServer V2!",
+          "adspace": "ARCANE!",
+          "title": "ArcaneServerV3",
+          "body": "Enjoy ArcaneServerV3",
           "spotlight": false
         }
       ]
@@ -1189,7 +1180,7 @@
           "background_right_color": "DD091A",
           "poster_back_image": "https://cdn.discordapp.com/attachments/927739901540188200/930882658546876506/lawin.jpg",
           "_type": "Tournament Display Info",
-          "pin_earned_text": "lawin is the winner!",
+          "pin_earned_text": "Pongo is the winner!",
           "tournament_display_id": "s11_switchcup",
           "highlight_color": "FFFFFF",
           "schedule_info": "November 2nd & 3rd: 2pm - 5pm JST",
@@ -1224,8 +1215,8 @@
         {
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
-          "title": "LawinServer V2",
-          "body": "Server created by Lawin (Twitter: @lawin_010)\nSource: https://github.com/Lawin0129/LawinServerV2",
+          "title": "ArcaneServerV2",
+          "body": "Enjoy ArcaneServerV2, Made By Pongo!",
           "spotlight": true
         }
       ]
@@ -1249,8 +1240,8 @@
           "gamemodes": [],
           "hidden": false,
           "_type": "CommonUI Emergency Notice Base",
-          "title": "LawinServer V2",
-          "body": "Server created by Lawin (Twitter: @lawin_010)\nSource: https://github.com/Lawin0129/LawinServerV2"
+          "title": "ArcaneServerV2",
+          "body": "Enjoy ArcaneServerV2, Made By Pongo!"
         }
       ]
     },
@@ -5982,8 +5973,8 @@
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
           "adspace": "ENJOY!",
-          "title": "LawinServer V2",
-          "body": "Enjoy LawinServer V2!",
+          "title": "ArcaneServerV2",
+          "body": "Enjoy ArcaneServerV2!",
           "spotlight": false
         }
       ]
@@ -6038,7 +6029,7 @@
           "bHidden": false,
           "sectionId": "Featured",
           "bShowTimer": true,
-          "sectionDisplayName": "LawinServer Item Shop",
+          "sectionDisplayName": "ArcaneServer Item Shop",
           "bShowIneligibleOffers": true
         }
       ]
@@ -6067,8 +6058,8 @@
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
           "adspace": "ENJOY!",
-          "title": "LawinServer V2",
-          "body": "Enjoy LawinServer V2!",
+          "title": "ArcaneServerV2",
+          "body": "Enjoy ArcaneServerV2!",
           "spotlight": false
         }
       ]

@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const fs = require("fs");
+require("dotenv").config();
 const rateLimit = require("express-rate-limit");
 const jwt = require("jsonwebtoken");
-const config = JSON.parse(fs.readFileSync("./Config/config.json").toString());
 
 const log = require("./structs/log.js");
 const error = require("./structs/error.js");
@@ -13,7 +13,7 @@ const functions = require("./structs/functions.js");
 if (!fs.existsSync("./ClientSettings")) fs.mkdirSync("./ClientSettings");
 
 global.JWT_SECRET = functions.MakeID();
-const PORT = 3551;
+const PORT = process.env.PORT || 3551;
 
 const tokens = JSON.parse(fs.readFileSync("./tokenManager/tokens.json").toString());
 
@@ -35,7 +35,7 @@ global.clientTokens = tokens.clientTokens;
 
 global.exchangeCodes = [];
 
-mongoose.connect(config.mongodb.database, () => {
+mongoose.connect(process.env.DB_URI, () => {
     log.backend("App successfully connected to MongoDB!");
 });
 

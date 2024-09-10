@@ -1,28 +1,71 @@
-const { Client, Intents } = require("discord.js");
-const client = new Client({ intents: [ Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES ] });
+require('dotenv').config();
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v10'); 
+const { Client, GatewayIntentBits, ActivityType } = require("discord.js");
 const fs = require("fs");
-const config = JSON.parse(fs.readFileSync("./Config/config.json").toString());
+const path = require("path");
 
-const log = require("../structs/log.js");
-
-client.once("ready", () => {
-    log.bot("Bot is up and running!");
-
-    let commands = client.application.commands;
-
-    fs.readdirSync("./DiscordBot/commands").forEach(fileName => {
-        const command = require(`./commands/${fileName}`);
-
-        commands.create(command.commandInfo);
-    });
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds, 
+        GatewayIntentBits.GuildMessages, 
+        GatewayIntentBits.MessageContent
+    ]
 });
 
-client.on("interactionCreate", interaction => {
-    if (!interaction.isApplicationCommand()) return;
+client.once('ready', () => {
+    console.log(`Logged in as ${client.user.tag}!`);
+    registerCommands();
+    setBotStatus();
+});
 
-    if (fs.existsSync(`./DiscordBot/commands/${interaction.commandName}.js`)) {
-        require(`./commands/${interaction.commandName}.js`).execute(interaction);
+async function registerCommands() {
+    const commands = [];
+    const commandsPath = path.join(__dirname, 'commands');
+    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
+    for (const file of commandFiles) {
+        const command = require(path.join(commandsPath, file));
+        commands.push(command.data.toJSON());
+    }
+
+    const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
+
+    try {
+        await rest.put(
+            Routes.applicationCommands(client.user.id), 
+            { body: commands }
+        );
+        console.log('Successfully reloaded application (/) commands.');
+    } catch (error) {
+        console.error('Error reloading commands:', error);
+    }
+}
+
+function setBotStatus() {
+    client.user.setPresence({
+        activities: [
+            {
+                name: "ArcaneServerV2",
+                type: ActivityType.Watching 
+            }
+        ],
+        status: 'dnd' 
+    });
+}
+
+// Handle command interactions
+client.on('interactionCreate', async interaction => {
+    if (!interaction.isCommand()) return;
+
+    const command = require(`./commands/${interaction.commandName}.js`);
+
+    try {
+        await command.execute(interaction);
+    } catch (error) {
+        console.error(`Error executing ${interaction.commandName}:`, error);
+        await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
     }
 });
 
-client.login(config.discord.bot_token);
+client.login(process.env.BOT_TOKEN);
